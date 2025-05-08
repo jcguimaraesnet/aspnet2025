@@ -9,21 +9,17 @@ namespace GuimasBurguerAppWeb.Pages
     {
         public IList<Hamburguer> Hamburguers;
 
-        private readonly ILogger<IndexModel> _logger;
+        private IHamburguerService _service;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IHamburguerService hamburguerService)
         {
-            _logger = logger;
+            _service = hamburguerService;
         }
 
         public void OnGet()
         {
-            var service = new HamburguerService();
-            Hamburguers = service.ObterTodos();
-        }
-
-        public void OnPost()
-        {
+            //var service = new HamburguerService();
+            Hamburguers = _service.ObterTodos();
         }
     }
 }

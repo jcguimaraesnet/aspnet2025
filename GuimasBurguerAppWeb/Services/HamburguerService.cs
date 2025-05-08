@@ -70,4 +70,21 @@ public class HamburguerService : IHamburguerService
         hamburguer.HamburguerId = proximoNumero;
         _hamburguers.Add(hamburguer);
     }
+
+    public void Alterar(Hamburguer hamburguer)
+    {
+        var hamburguerEncontrado = Obter(hamburguer.HamburguerId);
+        hamburguerEncontrado.Nome = hamburguer.Nome;
+        hamburguerEncontrado.Descricao = hamburguer.Descricao;
+        hamburguerEncontrado.Preco = hamburguer.Preco;
+        hamburguerEncontrado.EntregaExpressa = hamburguer.EntregaExpressa;
+        hamburguerEncontrado.DataCadastro = hamburguer.DataCadastro;
+        hamburguerEncontrado.ImagemUri = hamburguer.ImagemUri;
+    }
+
+    public void Excluir(int id)
+    {
+        var hamburguerEncontrado = Obter(id);
+        _hamburguers.Remove(hamburguerEncontrado);
+    }
 }

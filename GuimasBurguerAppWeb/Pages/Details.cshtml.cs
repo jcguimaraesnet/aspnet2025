@@ -7,12 +7,18 @@ namespace GuimasBurguerAppWeb.Pages
 {
     public class DetailsModel : PageModel
     {
-        public Hamburguer Hamburguer {  get; set; }
+        private IHamburguerService _service;
+        public Hamburguer Hamburguer { get; set; }
+
+        public DetailsModel(IHamburguerService hamburguerService)
+        {
+            _service = hamburguerService;
+        }
 
         public void OnGet(int id)
         {
-            var service = new HamburguerService();
-            Hamburguer = service.Obter(id);
+            //var service = new HamburguerService();
+            Hamburguer = _service.Obter(id);
         }
     }
 }

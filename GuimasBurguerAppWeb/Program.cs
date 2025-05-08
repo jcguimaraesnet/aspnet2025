@@ -11,7 +11,7 @@ namespace GuimasBurguerAppWeb
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.AddTransient<IHamburguerService, HamburguerService>();
+            builder.Services.AddSingleton<IHamburguerService, HamburguerService>();
 
             var app = builder.Build();
 

@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GuimasBurguerAppWeb.Pages
 {
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private IHamburguerService _service;
 
-        public CreateModel(IHamburguerService hamburguerService)
+        public EditModel(IHamburguerService hamburguerService)
         {
             _service = hamburguerService;
         }
@@ -17,21 +17,26 @@ namespace GuimasBurguerAppWeb.Pages
         [BindProperty]
         public Hamburguer Hamburguer { get; set; }
 
+        public void OnGet(int id)
+        {
+            Hamburguer = _service.Obter(id);
+        }
+
         public IActionResult OnPost()
         {
-            if (Hamburguer.Nome == Hamburguer.Descricao)
-            {
-                ModelState.AddModelError("Hamburguer.Nome", 
-                    "Nome não pode ser igual a Descrição.");
-            }
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            
-            //var service = new HamburguerService();
-            _service.Incluir(Hamburguer);
+
+            _service.Alterar(Hamburguer);
+
+            return RedirectToPage("/Index");
+        }
+
+        public IActionResult OnPostDelete()
+        {
+            _service.Excluir(Hamburguer.HamburguerId);
 
             return RedirectToPage("/Index");
         }
