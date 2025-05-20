@@ -1,6 +1,6 @@
 ﻿using GuimasBurguerAppWeb.Models;
 
-namespace GuimasBurguerAppWeb.Services;
+namespace GuimasBurguerAppWeb.Services.Memory;
 
 public class HamburguerService : IHamburguerService
 {

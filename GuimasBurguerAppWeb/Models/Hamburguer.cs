@@ -1,15 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GuimasBurguerAppWeb.Models;
 
 public class Hamburguer
 {
+    [Comment("Campo ID da table")]
     public int HamburguerId { get; set; }
 
     [Required(AllowEmptyStrings = false, ErrorMessage = "Campo 'Nome' obrigatório.")]
     [StringLength(50, MinimumLength = 10, ErrorMessage = "Campo 'Nome'deve conter entre 10 e 50 caracteres.")]
     public string Nome { get; set; }
 
+    [NotMapped]
     public string NomeSlug => Nome?.ToLower().Replace(" ", "-");
 
     [Display(Name = "Descrição")]
@@ -29,6 +33,7 @@ public class Hamburguer
     [Display(Name = "Entrega Expressa")]
     public bool EntregaExpressa { get; set; }
 
+    [NotMapped]
     public string EntregaExpressaFormatada => EntregaExpressa ? "Sim" : "Não";
 
     [Display(Name = "Disponível em")]
