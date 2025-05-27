@@ -4,6 +4,7 @@ using GuimasBurguerAppWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuimasBurguerAppWeb.Data.Migrations
 {
     [DbContext(typeof(HamburguerDbContext))]
-    partial class HamburguerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527112224_AdicionarCategoria")]
+    partial class AdicionarCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace GuimasBurguerAppWeb.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CategoriaHamburguer", b =>
-                {
-                    b.Property<int>("CategoriasCategoriaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HamburguersHamburguerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoriasCategoriaId", "HamburguersHamburguerId");
-
-                    b.HasIndex("HamburguersHamburguerId");
-
-                    b.ToTable("CategoriaHamburguer");
-                });
 
             modelBuilder.Entity("GuimasBurguerAppWeb.Models.Categoria", b =>
                 {
@@ -109,21 +97,6 @@ namespace GuimasBurguerAppWeb.Data.Migrations
                     b.HasKey("MarcaId");
 
                     b.ToTable("Marca");
-                });
-
-            modelBuilder.Entity("CategoriaHamburguer", b =>
-                {
-                    b.HasOne("GuimasBurguerAppWeb.Models.Categoria", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriasCategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GuimasBurguerAppWeb.Models.Hamburguer", null)
-                        .WithMany()
-                        .HasForeignKey("HamburguersHamburguerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

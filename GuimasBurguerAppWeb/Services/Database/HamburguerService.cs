@@ -23,6 +23,7 @@ public class HamburguerService : IHamburguerService
         hamburguerOriginal.DataCadastro = hamburguer.DataCadastro;
         hamburguerOriginal.ImagemUri = hamburguer.ImagemUri;
         hamburguerOriginal.MarcaId = hamburguer.MarcaId;
+        hamburguerOriginal.Categorias = hamburguer.Categorias;
 
         _context.SaveChanges();
     }
@@ -47,7 +48,13 @@ public class HamburguerService : IHamburguerService
     public Hamburguer Obter(int id)
     {
         return _context.Hamburguer
+            .Include(item => item.Categorias)
             .SingleOrDefault(item => item.HamburguerId == id);
+    }
+
+    public IList<Categoria> ObterTodasCategorias()
+    {
+        return _context.Categoria.ToList();
     }
 
     public IList<Marca> ObterTodasMarcas()

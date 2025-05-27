@@ -7,6 +7,7 @@ public class HamburguerDbContext : DbContext
 {
     public DbSet<Hamburguer> Hamburguer { get; set; }
     public DbSet<Marca> Marca { get; set; }
+    public DbSet<Categoria> Categoria { get; set; }
 
     protected override void OnConfiguring
     (

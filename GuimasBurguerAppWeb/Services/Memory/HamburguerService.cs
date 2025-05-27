@@ -99,4 +99,14 @@ public class HamburguerService : IHamburguerService
         };
         return marcas;
     }
+
+    public IList<Categoria> ObterTodasCategorias()
+    {
+        return new List<Categoria>() {
+            new Categoria() { Descricao = "Vegano" },
+            new Categoria() { Descricao = "Clássico" },
+            new Categoria() { Descricao = "Vegetariano" },
+            new Categoria() { Descricao = "Super Calórico" }
+        };
+    }
 }

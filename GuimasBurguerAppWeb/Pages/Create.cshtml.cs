@@ -18,7 +18,13 @@ namespace GuimasBurguerAppWeb.Pages
         [BindProperty]
         public Hamburguer Hamburguer { get; set; }
 
+        [BindProperty]
+        public IList<int> CategoriaIds { get; set; }
+
+
         public SelectList MarcaOptionItems { get; set; }
+
+        public SelectList CategoriaOptionItems { get; set; }
 
         public void OnGet()
         {
@@ -26,6 +32,9 @@ namespace GuimasBurguerAppWeb.Pages
                                                 nameof(Marca.MarcaId),
                                                 nameof(Marca.Nome));
 
+            CategoriaOptionItems = new SelectList(_service.ObterTodasCategorias(),
+                                    nameof(Categoria.CategoriaId),
+                                    nameof(Categoria.Descricao));
         }
 
         public IActionResult OnPost()
