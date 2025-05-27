@@ -80,11 +80,23 @@ public class HamburguerService : IHamburguerService
         hamburguerEncontrado.EntregaExpressa = hamburguer.EntregaExpressa;
         hamburguerEncontrado.DataCadastro = hamburguer.DataCadastro;
         hamburguerEncontrado.ImagemUri = hamburguer.ImagemUri;
+        hamburguerEncontrado.MarcaId = hamburguer.MarcaId;
     }
 
     public void Excluir(int id)
     {
         var hamburguerEncontrado = Obter(id);
         _hamburguers.Remove(hamburguerEncontrado);
+    }
+
+    public IList<Marca> ObterTodasMarcas()
+    {
+        var marcas = new List<Marca>()
+        {
+            new Marca() { Nome = "Sadia" },
+            new Marca() { Nome = "Perdigão" },
+            new Marca() { Nome = "Baby beef" },
+        };
+        return marcas;
     }
 }

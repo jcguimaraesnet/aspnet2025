@@ -2,12 +2,14 @@ using GuimasBurguerAppWeb.Models;
 using GuimasBurguerAppWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GuimasBurguerAppWeb.Pages
 {
     public class EditModel : PageModel
     {
         private IHamburguerService _service;
+        public SelectList MarcaOptionItems { get; set; }
 
         public EditModel(IHamburguerService hamburguerService)
         {
@@ -20,6 +22,11 @@ namespace GuimasBurguerAppWeb.Pages
         public void OnGet(int id)
         {
             Hamburguer = _service.Obter(id);
+
+            MarcaOptionItems = new SelectList(_service.ObterTodasMarcas(),
+                                                nameof(Marca.MarcaId),
+                                                nameof(Marca.Nome));
+
         }
 
         public IActionResult OnPost()

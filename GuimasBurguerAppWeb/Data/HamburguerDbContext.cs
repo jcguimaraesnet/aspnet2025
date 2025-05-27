@@ -6,7 +6,7 @@ namespace GuimasBurguerAppWeb.Data;
 public class HamburguerDbContext : DbContext
 {
     public DbSet<Hamburguer> Hamburguer { get; set; }
-    //public DbSet<Ingrediente> Ingrediente { get; set; }
+    public DbSet<Marca> Marca { get; set; }
 
     protected override void OnConfiguring
     (

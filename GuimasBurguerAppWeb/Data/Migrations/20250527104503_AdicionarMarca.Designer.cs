@@ -4,6 +4,7 @@ using GuimasBurguerAppWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuimasBurguerAppWeb.Data.Migrations
 {
     [DbContext(typeof(HamburguerDbContext))]
-    partial class HamburguerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527104503_AdicionarMarca")]
+    partial class AdicionarMarca
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
