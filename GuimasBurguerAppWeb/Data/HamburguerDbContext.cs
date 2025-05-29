@@ -1,9 +1,10 @@
 ﻿using GuimasBurguerAppWeb.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GuimasBurguerAppWeb.Data;
 
-public class HamburguerDbContext : DbContext
+public class HamburguerDbContext : IdentityDbContext
 {
     public DbSet<Hamburguer> Hamburguer { get; set; }
     public DbSet<Marca> Marca { get; set; }

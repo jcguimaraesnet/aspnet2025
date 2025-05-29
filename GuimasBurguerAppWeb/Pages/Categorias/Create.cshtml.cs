@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GuimasBurguerAppWeb.Data;
 using GuimasBurguerAppWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GuimasBurguerAppWeb.Pages.Categorias
 {
